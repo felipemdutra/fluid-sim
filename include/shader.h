@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include <glm/glm.hpp>
 #include <string>
 
@@ -19,4 +22,6 @@ class Shader {
         void setVec3(const std::string &name, glm::vec3 value) const;
         void setMat4(const std::string &name, glm::mat4 value) const;
 };
+
+#endif
 
