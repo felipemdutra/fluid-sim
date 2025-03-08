@@ -13,7 +13,7 @@ struct Vertex {
 struct Mesh {
     unsigned int vao, vbo, ebo;
 
-    std::vector<float> vertices;
+    std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
 };
 
