@@ -2,6 +2,9 @@
 CXX := g++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++17 -Iinclude/
 
+# Linker flags for OpenGL, GLEW, and GLFW
+LDFLAGS = -L/usr/local/lib -lGL -lGLEW -lglfw
+
 # Directories
 SRC_DIR := src
 BUILD_DIR := build
@@ -17,7 +20,7 @@ all: $(TARGET)
 
 # Link the executable
 $(TARGET): $(OBJ_FILES) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 # Compile each .cpp file separately
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
