@@ -1,3 +1,6 @@
+#ifndef MESH_H
+#define MESH_H
+
 #include <vector>
 #include <glm/glm.hpp>
 
@@ -16,5 +19,10 @@ struct Mesh {
     std::vector<unsigned int> indices;
 };
 
-Mesh createCircleMesh(float radius, int segments);
+Mesh genCircleMesh(float radius, unsigned int numSegments);
+
+void initBuffers(Mesh& mesh);
+void freeBuffers(Mesh& mesh);
+
+#endif
 
