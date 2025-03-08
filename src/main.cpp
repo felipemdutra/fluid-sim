@@ -1,6 +1,6 @@
-#include "cool.h"
+#include "particle.h"
 
 int main() {
-    sayHello();
+    Particle p1;
 }
 
