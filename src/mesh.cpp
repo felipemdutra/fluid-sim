@@ -1,6 +1,33 @@
+#include <GL/glew.h>
+
 #include "mesh.h"
 
-Mesh createCircleMesh(float radius, unsigned int numSegments) {
+void initBuffers(Mesh& mesh) {
+    glGenVertexArrays(1, &mesh.vao);
+    glGenBuffers(1, &mesh.vbo);
+    glGenBuffers(1, &mesh.ebo);
+
+    glBindVertexArray(mesh.vao);
+
+    glBindBuffer(GL_ARRAY_BUFFER, mesh.vbo);
+    glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size() * sizeof(Vertex), mesh.vertices.data(), GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(Vertex), mesh.indices.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glBindVertexArray(0);
+}
+
+void freeBuffers(Mesh& mesh) {
+    glDeleteBuffers(1, &mesh.vbo);
+    glDeleteBuffers(1, &mesh.ebo);
+    glDeleteVertexArrays(1, &mesh.vao);
+}
+
+Mesh genCircleMesh(float radius, unsigned int numSegments) {
     Mesh mesh;
     
     // add the center vertex (index 0)
