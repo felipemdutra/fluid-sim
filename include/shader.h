@@ -8,11 +8,11 @@ class Shader {
     private:
         unsigned int id;
 
-        void checkCompileErrors(unsigned int shader, std::string type);
-        void checkLinkErrors(unsigned int shaderProgram);
+        bool checkCompileErrors(unsigned int shader, std::string type);
+        bool checkLinkErrors(unsigned int shaderProgram);
 
     public:
-        Shader(const char* vertexPath, const char* fragmentPath);
+        bool init(const char* vertexPath, const char* fragmentPath);
 
         void use();
 
