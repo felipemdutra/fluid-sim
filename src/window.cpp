@@ -61,11 +61,6 @@ void destroyWindow(Window *window) {
     glfwTerminate();
 }
 
-void windowClear(const float r, const float g, const float b, const float a) {
-    glClearColor(r, g, b, a);
-    glClear(GL_COLOR_BUFFER_BIT);
-}
-
 bool windowShouldClose(Window* window) {
     return glfwWindowShouldClose(window->nativeWindow);
 }
