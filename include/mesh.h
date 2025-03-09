@@ -24,5 +24,7 @@ Mesh genCircleMesh(float radius, unsigned int numSegments);
 void initBuffers(Mesh& mesh);
 void freeBuffers(Mesh& mesh);
 
+void draw(Mesh& mesh);
+
 #endif
 
