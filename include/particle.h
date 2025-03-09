@@ -16,7 +16,11 @@ struct Particle {
     float density = 1.0f;
 
     static Mesh mesh;
+
+    Particle();
 };
+
+void updateModelMatrix(Particle& particle);
 
 #endif
 
