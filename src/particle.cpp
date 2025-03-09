@@ -1,5 +1,13 @@
-#include "mesh.h"
-#include "particle.h"
+#include <glm/gtc/matrix_transform.hpp>
 
-Mesh Particle::mesh = genCircleMesh(1.0f, 16);
+#include "particle.h"
+#include "mesh.h"
+
+Mesh Particle::mesh;
+
+void updateModelMatrix(Particle& particle) {
+    particle.modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(particle.pos, 0.0f));
+}
+
+Particle::Particle() { }
 
