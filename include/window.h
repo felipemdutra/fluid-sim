@@ -17,5 +17,4 @@ int initWindow(Window* window);
 bool windowShouldClose(Window* window);
 void swapBuffers(Window* window);
 void pollEvents();
-void windowClear(const float r, const float g, const float b, const float a);
 
