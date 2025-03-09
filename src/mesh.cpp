@@ -13,7 +13,7 @@ void initBuffers(Mesh& mesh) {
     glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size() * sizeof(Vertex), mesh.vertices.data(), GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(Vertex), mesh.indices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(unsigned int), mesh.indices.data(), GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
     glEnableVertexAttribArray(0);
@@ -58,5 +58,11 @@ Mesh genCircleMesh(float radius, unsigned int numSegments) {
     mesh.indices.push_back(1);               // First circumference vertex
 
     return mesh;
+}
+
+void draw(Mesh& mesh) {
+    glBindVertexArray(mesh.vao);
+    glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }
 
